@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Eva's Weather App</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="src/styles.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row header">
+        <div class="col-10">
+          <form id="search-form">
+            <input
+              type="text"
+              class="search"
+              id="searchInput"
+              placeholder="Search City..."
+            />
+            <input class="button" type="submit" value="Search" />
+            <button class="button" id="myLocation">My Location</button>
+          </form>
+        </div>
+        <div class="col-2">
+          <button class="button" id="imperialButton" type="button">
+            Imperial
+          </button>
+          <button class="button" id="metricButton" type="button">Metric</button>
+        </div>
+      </div>
+      <br />
+      <section class="row topPart">
+        <div class="col-6">
+          <h1 class="city" id="city">Chamonix</h1>
+          <p class="country" id="country">France</p>
+          <hr />
+        </div>
+        <div class="col-7">
+          <div class="row">
+            <div class="col-3 title" id="today">Today</div>
+            <div class="col-3 title">High</div>
+            <div class="col-3 title">Low</div>
+          </div>
+
+          <div class="row">
+            <div class="col-3 title" id="FullTodayDate">
+              <span id="todayMonth">8</span>/<span id="todayDay">25</span>
+            </div>
+            <div class="col-5"></div>
+            <div class="col-2 weatherVisual">☀️</div>
+          </div>
+
+          <div class="row">
+            <div class="col-3 title" id="FulltodayTime">
+              <span id="hours">7</span>:<span id="minutes">15</span>
+            </div>
+            <div class="col-3 temp">
+              <h6>
+                <span id="todayTempHigh">16</span>°<span class="unit">C</span>
+              </h6>
+            </div>
+            <div class="col-3 temp">
+              <h6>
+                <span id="todayTempLow">16</span>°<span class="unit">C</span>
+              </h6>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-2 title">
+          <div class="row weatherRows">Wind</div>
+          <div class="row weatherRows">Humidity</div>
+          <div class="row weatherRows">Precipitation</div>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-2 temp">
+          <div class="row weatherRows">
+            <h6>10<span class="unitsPerHour">kph</span></h6>
+          </div>
+          <div class="row weatherRows"><h6>3%</h6></div>
+          <div class="row weatherRows"><h6>0%</h6></div>
+        </div>
+      </section>
+
+      <ul class="card forecast">
+        <li>
+          <div class="row title">
+            <div class="col-3 forecastCols title">Day</div>
+            <div class="col-3 forecastCols">Date</div>
+            <div class="col-3 forecastCols">Temperature</div>
+            <div class="col-3 forecastCols">Weather</div>
+          </div>
+        </li>
+        <li>
+          <hr />
+          <div class="row forcastdays day1">
+            <div class="col-3 forecastCols title">Thursday</div>
+            <div class="col-3 forecastCols dark">
+              <span id="day1Month">8</span>/<span id="day1day">31</span>
+            </div>
+            <div class="col-3 forecastCols temp">
+              <span class="tempDegrees">16</span>°<span class="unit">C</span>
+            </div>
+            <div class="col-3 forecastCols weatherVisual">☀️</div>
+          </div>
+        </li>
+        <li>
+          <div class="row forcastdays day2">
+            <div class="col-3 forecastCols title">Friday</div>
+            <div class="col-3 forecastCols dark">
+              <span id="day2Month">8</span>/<span id="day2day">31</span>
+            </div>
+            <div class="col-3 forecastCols temp">
+              <span class="tempDegrees">16</span>°<span class="unit">C</span>
+            </div>
+            <div class="col-3 forecastCols weatherVisual">☀️</div>
+          </div>
+        </li>
+        <li>
+          <div class="row forcastdays day3">
+            <div class="col-3 forecastCols title">Saturday</div>
+            <div class="col-3 forecastCols dark">
+              <span id="day3Month">8</span>/<span id="day3day">31</span>
+            </div>
+            <div class="col-3 forecastCols temp">
+              <span class="tempDegrees">16</span>°<span class="unit">C</span>
+            </div>
+            <div class="col-3 forecastCols weatherVisual">☀️</div>
+          </div>
+        </li>
+        <li>
+          <div class="row forcastdays day4">
+            <div class="col-3 forecastCols title">Sunday</div>
+            <div class="col-3 forecastCols dark">
+              <span id="day4Month">8</span>/<span id="day4day">31</span>
+            </div>
+            <div class="col-3 forecastCols temp">
+              <span class="tempDegrees">16</span>°<span class="unit">C</span>
+            </div>
+            <div class="col-3 forecastCols weatherVisual">☀️</div>
+          </div>
+        </li>
+        <li>
+          <div class="row forcastdays day5">
+            <div class="col-3 forecastCols title">Monday</div>
+            <div class="col-3 forecastCols dark">
+              <span id="day5Month">8</span>/<span id="day5day">31</span>
+            </div>
+            <div class="col-3 forecastCols temp">
+              <span class="tempDegrees">16</span>°<span class="unit">C</span>
+            </div>
+            <div class="col-3 forecastCols weatherVisual">☀️</div>
+          </div>
+        </li>
+        <li>
+          <div class="row forcastdays day6">
+            <div class="col-3 forecastCols title">Tuesday</div>
+            <div class="col-3 forecastCols dark">
+              <span id="day6Month">8</span>/<span id="day6day">31</span>
+            </div>
+            <div class="col-3 forecastCols temp">
+              <span class="tempDegrees">16</span>°<span class="unit">C</span>
+            </div>
+            <div class="col-3 forecastCols weatherVisual">☀️</div>
+          </div>
+        </li>
+      </ul>
+      <footer>Coded by Eva Weymuller</footer>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>

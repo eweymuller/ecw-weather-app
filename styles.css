@@ -1,0 +1,80 @@
+.container {
+  font-family: "Bitter", serif;
+}
+li {
+  list-style-type: none;
+}
+section,
+.topPart .title {
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.button {
+  border-radius: 3px;
+  display: inline;
+  margin: 5px, 5px, 5px;
+  padding: 1px 14px;
+  background: transparent;
+  border: 1px solid rgba(129, 202, 215, 0.783);
+  color: rgb(0, 0, 0);
+  font-size: 15px;
+  transition: all 300ms ease-in-out;
+  cursor: pointer;
+  box-shadow: rgba(9, 11, 69, 0.08) 0px 8px 8px 0;
+}
+.button:hover {
+  color: #0c084c;
+  background: rgba(125, 214, 249, 0.704);
+  border: 1px solid rgba(129, 202, 215, 0.783);
+}
+.city {
+  font-size: 45px;
+  color: rgb(127, 177, 250);
+}
+.country {
+  text-align: right;
+  padding-right: 10px;
+  color: rgb(2, 44, 106);
+}
+.search {
+  margin: 10px 0px 10px;
+  border: 1px solid rgba(129, 202, 215, 0.783);
+  font-size: 15px;
+  box-shadow: rgba(37, 39, 89, 0.08) 0px 8px 8px 0;
+}
+
+.title {
+  color: rgb(1, 77, 191);
+}
+.dark {
+  color: rgb(2, 44, 106);
+}
+.temp {
+  color: rgb(2, 198, 242);
+}
+.weatherRows {
+  padding: 10px 0px;
+}
+.weatherVisual {
+  font-size: 30px;
+}
+.forecast {
+  padding: 20px;
+  font-size: 18px;
+  box-shadow: rgba(66, 123, 222, 0.255) 2px 5px 8px 0px;
+}
+.forecastCols {
+  padding: 5px 0px 5px;
+}
+.forcastdays:hover {
+  background-color: #ffdd00bb;
+}
+footer {
+  margin: 20px auto 0px auto;
+  color: rgb(2, 44, 106);
+  font-family: monospace;
+  font-size: 12px;
+}
