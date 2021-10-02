@@ -78,11 +78,17 @@ function findCity(city) {
 //search engine
 
 // city temp
-function cityTemp(temperature) {
+function cityTemp(response) {
+  console.log(response);
+  myCountry(response);
+  let tempLow = Math.round(response.data.main.temp_min);
+  let tempHigh = Math.round(response.data.main.temp_max);
   let todayTempHigh = document.querySelector("#todayTempHigh");
   let todayTempLow = document.querySelector("#todayTempLow");
-  console.log(todayTempHigh);
-  console.log(todayTempLow);
+  //console.log(tempHigh);
+  //console.log(tempLow);
+  todayTempHigh.innerHTML = `${tempHigh}`;
+  todayTempLow.innerHTML = `${tempLow}`;
 }
 // city temp
 
