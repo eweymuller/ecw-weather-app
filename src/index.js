@@ -4,10 +4,6 @@ function getLocation(event) {
 }
 
 function myLocation(position) {
-  //console.log(position);
-  //console.log(position.coords.latitude);
-  //console.log(position.coords.longitude);
-
   let lon = position.coords.longitude;
   let lat = position.coords.latitude;
   let apiKey = "7633347349ec94a368e4a15d93744b30";
@@ -18,42 +14,33 @@ function myLocation(position) {
 }
 
 function myTemp(response) {
-  //console.log(response.data);
   let tempLow = Math.round(response.data.main.temp_min);
   let tempHigh = Math.round(response.data.main.temp_max);
-  //console.log(tempLow);
-  //console.log(tempHigh);
   let todayTempHigh = document.querySelector("#todayTempHigh");
-  //console.log(todayTempHigh);
   todayTempHigh.innerHTML = `${tempHigh}`;
   let todayTempLow = document.querySelector("#todayTempLow");
-  //console.log(todayTempLow);
   todayTempLow.innerHTML = `${tempLow}`;
 
   myCity(response);
 }
 function myCity(response) {
   let city = document.querySelector(".city");
-  //console.log(city);
-  //console.log(response.data.name);
   let myCity = response.data.name;
   city.innerHTML = `${myCity}`;
   myCountry(response);
 }
-//user country
+//user country START
 function myCountry(response) {
   let country = document.querySelector("#country");
-  //console.log(country);
-  //console.log(response.data.sys.country);
   let myCountry = response.data.sys.country;
   country.innerHTML = `${myCountry}`;
 }
-//user country
+//user country END
 let myLocationBtn = document.querySelector("#myLocation");
 myLocationBtn.addEventListener("click", getLocation);
 
 //search engine
-//update city
+//update city START
 function search(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#searchInput");
@@ -63,51 +50,35 @@ function search(event) {
 }
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
-//update city
-//find city
+//update city END
+//find city START
 function findCity(city) {
-  console.log("I'm working!");
   let apiKey = "7633347349ec94a368e4a15d93744b30";
   let units = "metric";
   let cityApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-  //How do I console.log the response here, so I can access the data and weather?
   axios.get(cityApiUrl).then(cityTemp);
 }
-//find city
-//update temp
+//find city END
 //search engine
 
-// city temp
+// city temp START
 function cityTemp(response) {
-  console.log(response);
   myCountry(response);
   let tempLow = Math.round(response.data.main.temp_min);
   let tempHigh = Math.round(response.data.main.temp_max);
   let todayTempHigh = document.querySelector("#todayTempHigh");
   let todayTempLow = document.querySelector("#todayTempLow");
-  //console.log(tempHigh);
-  //console.log(tempLow);
   todayTempHigh.innerHTML = `${tempHigh}`;
   todayTempLow.innerHTML = `${tempLow}`;
 }
-// city temp
+// city temp END
 
-//In progress above...
-//
-//
-//
-//
-//
-//
-//
-// current date
-//date preset
+// current date START
+//date preset START
 let now = new Date();
-//console.log(now);
-//date preset
+//date preset END
 
-//Today (of Week)
-//console.log(now.getDay());
+//Today (of Week) START
 function formatToday(date) {
   let days = [
     "Sunday",
@@ -123,36 +94,36 @@ function formatToday(date) {
   today.innerHTML = `${updateToday}`;
 }
 formatToday(now);
-//Today (of Week)
+//Today (of Week) END
 
-//month
+//month START
 let todayMonth = now.getMonth();
 let currentMonth = todayMonth + 1;
 let monthDate = document.querySelector("#todayMonth");
 monthDate.innerHTML = `${currentMonth}`;
-//month
+//month END
 
-//day(of month)
+//day(of month) START
 let todayDate = now.getDate();
 let dayDate = document.querySelector("#todayDay");
 dayDate.innerHTML = `${todayDate}`;
-//day(of month)
+//day(of month) END
 
-//hour
+//hour START
 let hours = now.getHours();
 let todayHour = document.querySelector("#hours");
 if (hours < 10) {
   hours = `0${hours}`;
 }
 todayHour.innerHTML = `${hours}`;
-//hour
+//hour END
 
-//minute
+//minute START
 let minutes = now.getMinutes();
 let todayMinutes = document.querySelector("#minutes");
 if (minutes < 10) {
   minutes = `0${minutes}`;
 }
 todayMinutes.innerHTML = `${minutes}`;
-//minute
-// current date
+//minute END
+// current date END
