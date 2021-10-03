@@ -27,17 +27,18 @@ function myTemp(response) {
 }
 // user location temp END
 
-// addional weather data START
+// additional weather data START
 function additionalWeatherData(response) {
   let wind = document.querySelector("#wind");
   wind.innerHTML = `${response.data.wind.speed}`;
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = `${response.data.main.humidity}`;
-
+  let weatherDescription = document.querySelector(".weatherDescription");
+  weatherDescription.innerHTML = `${response.data.weather.description}`;
   // console.log(response.data.weather.icon);
-  //console.log(response.data.weather.description);
+  console.log(response.data.weather.[0].description);
 }
-// addional weather data END
+// additional weather data END
 
 // user city START
 function myCity(response) {
