@@ -1,8 +1,8 @@
+// user location START
 function getLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(myLocation);
 }
-
 function myLocation(position) {
   let lon = position.coords.longitude;
   let lat = position.coords.latitude;
@@ -12,7 +12,9 @@ function myLocation(position) {
 
   axios.get(apiUrl).then(myTemp);
 }
+//user location END
 
+// user location temp START
 function myTemp(response) {
   let tempLow = Math.round(response.data.main.temp_min);
   let tempHigh = Math.round(response.data.main.temp_max);
@@ -20,15 +22,32 @@ function myTemp(response) {
   todayTempHigh.innerHTML = `${tempHigh}`;
   let todayTempLow = document.querySelector("#todayTempLow");
   todayTempLow.innerHTML = `${tempLow}`;
-
+  additionalWeatherData(response);
   myCity(response);
 }
+// user location temp END
+
+// addional weather data START
+function additionalWeatherData(response) {
+  let wind = document.querySelector("#wind");
+  wind.innerHTML = `${response.data.wind.speed}`;
+  let humidity = document.querySelector("#humidity");
+  humidity.innerHTML = `${response.data.main.humidity}`;
+
+  // console.log(response.data.weather.icon);
+  //console.log(response.data.weather.description);
+}
+// addional weather data END
+
+// user city START
 function myCity(response) {
   let city = document.querySelector(".city");
   let myCity = response.data.name;
   city.innerHTML = `${myCity}`;
   myCountry(response);
 }
+// user city END
+
 //user country START
 function myCountry(response) {
   let country = document.querySelector("#country");
@@ -64,6 +83,7 @@ function findCity(city) {
 // city temp START
 function cityTemp(response) {
   myCountry(response);
+  additionalWeatherData(response);
   let tempLow = Math.round(response.data.main.temp_min);
   let tempHigh = Math.round(response.data.main.temp_max);
   let todayTempHigh = document.querySelector("#todayTempHigh");
