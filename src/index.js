@@ -34,9 +34,8 @@ function additionalWeatherData(response) {
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = `${response.data.main.humidity}`;
   let weatherDescription = document.querySelector(".weatherDescription");
-  weatherDescription.innerHTML = `${response.data.weather.description}`;
+  weatherDescription.innerHTML = `${response.data.weather[0].description}`;
   // console.log(response.data.weather.icon);
-  //console.log(response.data.weather.[0].description);
 }
 // additional weather data END
 
