@@ -36,7 +36,7 @@ function additionalWeatherData(response) {
   let weatherDescription = document.querySelector(".weatherDescription");
   weatherDescription.innerHTML = `${response.data.weather.description}`;
   // console.log(response.data.weather.icon);
-  console.log(response.data.weather.[0].description);
+  //console.log(response.data.weather.[0].description);
 }
 // additional weather data END
 
