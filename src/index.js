@@ -147,3 +147,40 @@ if (minutes < 10) {
 todayMinutes.innerHTML = `${minutes}`;
 //minute END
 // current date END
+
+//temperature/unit measure
+function changeUnitImperial(event) {
+  event.preventDefault();
+  let units = document.querySelectorAll(".unit");
+  units.forEach(function (unit) {
+    unit.innerHTML = "F";
+  });
+  let unitsPerHour = document.querySelectorAll(".unitsPerHour");
+  unitsPerHour.forEach(function (uph) {
+    uph.innerHTML = "mph";
+  });
+  let tempDegrees = document.querySelectorAll(".tempDegrees");
+  tempDegrees.forEach(function (tmepF) {
+    tmepF.innerHTML = "66";
+  });
+}
+let imperialMeasureButton = document.querySelector("#imperialButton");
+imperialMeasureButton.addEventListener("click", changeUnitImperial);
+function changeUnitMetric(event) {
+  event.preventDefault();
+  let units = document.querySelectorAll(".unit");
+  units.forEach(function (unit) {
+    unit.innerHTML = "C";
+  });
+  let unitsPerHour = document.querySelectorAll(".unitsPerHour");
+  unitsPerHour.forEach(function (uph) {
+    uph.innerHTML = "kph";
+  });
+  let tempDegrees = document.querySelectorAll(".tempDegrees");
+  tempDegrees.forEach(function (tempC) {
+    tempC.innerHTML = "16";
+  });
+}
+let metricMeasureButton = document.querySelector("#metricButton");
+metricMeasureButton.addEventListener("click", changeUnitMetric);
+//temperature/unit measure
