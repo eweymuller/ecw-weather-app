@@ -33,6 +33,8 @@ function additionalWeatherData(response) {
   wind.innerHTML = `${response.data.wind.speed}`;
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = `${response.data.main.humidity}`;
+  let feel = document.querySelector("#feel");
+  feel.innerHTML = `${response.data.main.feels_like}`;
   let weatherDescription = document.querySelector(".weatherDescription");
   weatherDescription.innerHTML = `${response.data.weather[0].description}`;
   // console.log(response.data.weather.icon);

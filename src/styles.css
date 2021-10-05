@@ -33,6 +33,7 @@ section,
 .city {
   font-size: 45px;
   color: rgb(127, 177, 250);
+  text-transform: capitalize;
 }
 .country {
   text-align: right;
