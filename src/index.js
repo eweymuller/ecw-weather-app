@@ -162,8 +162,9 @@ function changeUnitImperial(event) {
     uph.innerHTML = "mph";
   });
   let tempDegrees = document.querySelectorAll(".tempDegrees");
-  tempDegrees.forEach(function (tmepF) {
-    tmepF.innerHTML = "66";
+  tempDegrees.forEach(function (tempF) {
+    tempF.innerHTML = `${Math.round()}`;
+    // Have to figure out how to attatch conversion to live data- add changeimperial(response) to location finder? (same for metric)
   });
 }
 let imperialMeasureButton = document.querySelector("#imperialButton");
