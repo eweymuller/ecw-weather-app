@@ -1,6 +1,9 @@
 .container {
   font-family: "Bitter", serif;
 }
+.container::first-letter {
+  text-transform: capitalize;
+}
 li {
   list-style-type: none;
 }

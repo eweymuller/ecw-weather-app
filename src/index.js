@@ -30,11 +30,11 @@ function myTemp(response) {
 // additional weather data START
 function additionalWeatherData(response) {
   let wind = document.querySelector("#wind");
-  wind.innerHTML = `${response.data.wind.speed}`;
+  wind.innerHTML = `${Math.round(response.data.wind.speed)}`;
   let humidity = document.querySelector("#humidity");
-  humidity.innerHTML = `${response.data.main.humidity}`;
+  humidity.innerHTML = `${Math.round(response.data.main.humidity)}`;
   let feel = document.querySelector("#feel");
-  feel.innerHTML = `${response.data.main.feels_like}`;
+  feel.innerHTML = `${Math.round(response.data.main.feels_like)}`;
   let weatherDescription = document.querySelector(".weatherDescription");
   weatherDescription.innerHTML = `${response.data.weather[0].description}`;
   // console.log(response.data.weather.icon);
