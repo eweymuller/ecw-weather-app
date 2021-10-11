@@ -192,7 +192,7 @@ function changeUnitMetric(event) {
     uph.innerHTML = "kph";
   });
   let tempDegrees = document.querySelectorAll(".tempDegrees");
-  tempDegrees.forEach(function (tempC) {
+  tempDegrees(function (tempC) {
     tempC.innerHTML = "16";
   });
 }
