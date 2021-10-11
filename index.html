@@ -20,9 +20,9 @@
   </head>
   <body>
     <div class="container">
+    <form id="search-form">
       <div class="row header">
         <div class="col-10">
-          <form id="search-form">
             <input
               type="text"
               class="search"
@@ -59,7 +59,14 @@
               <span id="todayMonth">--</span>/<span id="todayDay">--</span>
             </div>
             <div class="col-5"></div>
-            <div class="col-2 weatherVisual">☀️</div>
+            <div class="col-2 weatherVisual">
+              <img
+                src=""
+                alt="weather visual"
+                id="todayWeatherVisual"
+                class=""
+              />
+            </div>
           </div>
 
           <div class="row">
@@ -95,7 +102,7 @@
             <h6><span id="humidity">--</span> %</h6>
           </div>
           <div class="row weatherRows">
-            <h6><span id="feel">--</span> %</h6>
+            <h6><span id="feel">--</span>°<span class="unit">C</span></h6>
           </div>
         </div>
       </section>

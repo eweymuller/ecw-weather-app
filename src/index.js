@@ -1,3 +1,13 @@
+// today weather visual
+function todayWeatherVisual(response) {
+  let todayWeatherVisual = document.querySelector("#todayWeatherVisual");
+  todayWeatherVisual.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+}
+// today weather visual
+
 // user location START
 function getLocation(event) {
   event.preventDefault();
@@ -16,14 +26,15 @@ function myLocation(position) {
 
 // user location temp START
 function myTemp(response) {
+  additionalWeatherData(response);
+  myCity(response);
+  todayWeatherVisual(response);
   let tempLow = Math.round(response.data.main.temp_min);
   let tempHigh = Math.round(response.data.main.temp_max);
   let todayTempHigh = document.querySelector("#todayTempHigh");
   todayTempHigh.innerHTML = `${tempHigh}`;
   let todayTempLow = document.querySelector("#todayTempLow");
   todayTempLow.innerHTML = `${tempLow}`;
-  additionalWeatherData(response);
-  myCity(response);
 }
 // user location temp END
 
@@ -86,6 +97,7 @@ function findCity(city) {
 function cityTemp(response) {
   myCountry(response);
   additionalWeatherData(response);
+  todayWeatherVisual(response);
   let tempLow = Math.round(response.data.main.temp_min);
   let tempHigh = Math.round(response.data.main.temp_max);
   let todayTempHigh = document.querySelector("#todayTempHigh");
