@@ -173,14 +173,17 @@ function changeUnitImperial(event) {
   unitsPerHour.forEach(function (uph) {
     uph.innerHTML = "mph";
   });
+  //in progress
   let tempDegrees = document.querySelectorAll(".tempDegrees");
   tempDegrees.forEach(function (tempF) {
     tempF.innerHTML = `${Math.round()}`;
     // Have to figure out how to attatch conversion to live data- add changeimperial(response) to location finder? (same for metric)
   });
+  //in progress
 }
 let imperialMeasureButton = document.querySelector("#imperialButton");
 imperialMeasureButton.addEventListener("click", changeUnitImperial);
+
 function changeUnitMetric(event) {
   event.preventDefault();
   let units = document.querySelectorAll(".unit");
@@ -191,10 +194,12 @@ function changeUnitMetric(event) {
   unitsPerHour.forEach(function (uph) {
     uph.innerHTML = "kph";
   });
+  // in progress
   let tempDegrees = document.querySelectorAll(".tempDegrees");
   tempDegrees(function (tempC) {
     tempC.innerHTML = "16";
   });
+  // in progress
 }
 let metricMeasureButton = document.querySelector("#metricButton");
 metricMeasureButton.addEventListener("click", changeUnitMetric);
