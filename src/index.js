@@ -164,8 +164,6 @@ function changeUnitImperial(event) {
     uph.innerHTML = "mph";
   });
   //in progress
-  //let tempDegrees = document.querySelectorAll(".tempDegrees");
-  //tempDegrees.forEach(function (tempF) {
   let todayTempLow = document.querySelector(".todayTempLow");
   let tempFLow = (celsiusTemperatureLow * 9) / 5 + 32;
   todayTempLow.innerHTML = Math.round(tempFLow);
@@ -174,9 +172,6 @@ function changeUnitImperial(event) {
   let tempFHigh = (celsiusTemperatureHigh * 9) / 5 + 32;
   todayTempHigh.innerHTML = Math.round(tempFHigh);
 
-  //tempF.innerHTML = `${Math.round()}`;
-  // Have to figure out how to attatch conversion to live data- add changeimperial(response) to location finder? (same for metric)
-  //});
   //in progress
 }
 let imperialMeasureButton = document.querySelector("#imperialButton");
@@ -195,6 +190,7 @@ function changeUnitMetric(event) {
     uph.innerHTML = "kph";
   });
   // in progress
+
   let todayTempLow = document.querySelector(".todayTempLow");
   todayTempLow.innerHTML = Math.round(celsiusTemperatureLow);
 
