@@ -20,23 +20,9 @@ function myLocation(position) {
   let units = `metric`;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
 
-  axios.get(apiUrl).then(myTemp);
+  axios.get(apiUrl).then(cityTemp);
 }
 //user location END
-
-// user location temp START
-function myTemp(response) {
-  additionalWeatherData(response);
-  myCity(response);
-  todayWeatherVisual(response);
-  let tempLow = Math.round(response.data.main.temp_min);
-  let tempHigh = Math.round(response.data.main.temp_max);
-  let todayTempHigh = document.querySelector("#todayTempHigh");
-  let todayTempLow = document.querySelector("#todayTempLow");
-  todayTempHigh.innerHTML = `${tempHigh}`;
-  todayTempLow.innerHTML = `${tempLow}`;
-}
-// user location temp END
 
 // additional weather data START
 function additionalWeatherData(response) {
@@ -48,7 +34,6 @@ function additionalWeatherData(response) {
   feel.innerHTML = `${Math.round(response.data.main.feels_like)}`;
   let weatherDescription = document.querySelector(".weatherDescription");
   weatherDescription.innerHTML = `${response.data.weather[0].description}`;
-  // console.log(response.data.weather.icon);
 }
 // additional weather data END
 
@@ -98,6 +83,8 @@ function cityTemp(response) {
   myCountry(response);
   additionalWeatherData(response);
   todayWeatherVisual(response);
+  myCity(response);
+
   let tempLow = Math.round(response.data.main.temp_min);
   let tempHigh = Math.round(response.data.main.temp_max);
   let todayTempHigh = document.querySelector("#todayTempHigh");
@@ -105,7 +92,6 @@ function cityTemp(response) {
   todayTempHigh.innerHTML = `${tempHigh}`;
   todayTempLow.innerHTML = `${tempLow}`;
   celsiusTemperature = response.data.main.temp;
-  console.log(response.data.main.temp);
 }
 // city temp END
 
