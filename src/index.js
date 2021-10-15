@@ -91,7 +91,8 @@ function cityTemp(response) {
   let todayTempLow = document.querySelector("#todayTempLow");
   todayTempHigh.innerHTML = `${tempHigh}`;
   todayTempLow.innerHTML = `${tempLow}`;
-  celsiusTemperature = response.data.main.temp;
+  celsiusTemperatureHigh = response.data.main.temp_max;
+  celsiusTemperatureLow = response.data.main.temp_min;
 }
 // city temp END
 
@@ -165,9 +166,14 @@ function changeUnitImperial(event) {
   //in progress
   //let tempDegrees = document.querySelectorAll(".tempDegrees");
   //tempDegrees.forEach(function (tempF) {
-  let temperature = document.querySelector(".temperature");
-  let tempF = (celsiusTemperature * 9) / 5 + 32;
-  temperature.innerHTML = Math.round(tempF);
+  let todayTempLow = document.querySelector(".todayTempLow");
+  let tempFLow = (celsiusTemperatureLow * 9) / 5 + 32;
+  todayTempLow.innerHTML = Math.round(tempFLow);
+
+  let todayTempHigh = document.querySelector(".todayTempHigh");
+  let tempFHigh = (celsiusTemperatureHigh * 9) / 5 + 32;
+  todayTempHigh.innerHTML = Math.round(tempFHigh);
+
   //tempF.innerHTML = `${Math.round()}`;
   // Have to figure out how to attatch conversion to live data- add changeimperial(response) to location finder? (same for metric)
   //});
@@ -189,13 +195,19 @@ function changeUnitMetric(event) {
     uph.innerHTML = "kph";
   });
   // in progress
-  let temperature = document.querySelector(".temperature");
-  temperature.innerHTML = Math.round(celsiusTemperature);
+  let todayTempLow = document.querySelector(".todayTempLow");
+  todayTempLow.innerHTML = Math.round(celsiusTemperatureLow);
+
+  let todayTempHigh = document.querySelector(".todayTempHigh");
+  todayTempHigh.innerHTML = Math.round(celsiusTemperatureHigh);
+
   // in progress
 }
 let metricMeasureButton = document.querySelector("#metricButton");
 metricMeasureButton.addEventListener("click", changeUnitMetric);
 // metric
-let celsiusTemperature = null;
+let celsiusTemperatureHigh = null;
+let celsiusTemperatureLow = null;
+
 //temperature/unit measure
 findCity("chamonix");
