@@ -198,3 +198,4 @@ metricMeasureButton.addEventListener("click", changeUnitMetric);
 // metric
 let celsiusTemperature = null;
 //temperature/unit measure
+findCity("chamonix");
