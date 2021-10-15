@@ -32,8 +32,8 @@ function myTemp(response) {
   let tempLow = Math.round(response.data.main.temp_min);
   let tempHigh = Math.round(response.data.main.temp_max);
   let todayTempHigh = document.querySelector("#todayTempHigh");
-  todayTempHigh.innerHTML = `${tempHigh}`;
   let todayTempLow = document.querySelector("#todayTempLow");
+  todayTempHigh.innerHTML = `${tempHigh}`;
   todayTempLow.innerHTML = `${tempLow}`;
 }
 // user location temp END
@@ -104,6 +104,8 @@ function cityTemp(response) {
   let todayTempLow = document.querySelector("#todayTempLow");
   todayTempHigh.innerHTML = `${tempHigh}`;
   todayTempLow.innerHTML = `${tempLow}`;
+  celsiusTemperature = response.data.main.temp;
+  console.log(response.data.main.temp);
 }
 // city temp END
 
@@ -163,6 +165,7 @@ todayMinutes.innerHTML = `${minutes}`;
 // current date END
 
 //temperature/unit measure
+// imperial
 function changeUnitImperial(event) {
   event.preventDefault();
   let units = document.querySelectorAll(".unit");
@@ -174,16 +177,21 @@ function changeUnitImperial(event) {
     uph.innerHTML = "mph";
   });
   //in progress
-  let tempDegrees = document.querySelectorAll(".tempDegrees");
-  tempDegrees.forEach(function (tempF) {
-    tempF.innerHTML = `${Math.round()}`;
-    // Have to figure out how to attatch conversion to live data- add changeimperial(response) to location finder? (same for metric)
-  });
+  //let tempDegrees = document.querySelectorAll(".tempDegrees");
+  //tempDegrees.forEach(function (tempF) {
+  let temperature = document.querySelector(".temperature");
+  let tempF = (celsiusTemperature * 9) / 5 + 32;
+  temperature.innerHTML = Math.round(tempF);
+  //tempF.innerHTML = `${Math.round()}`;
+  // Have to figure out how to attatch conversion to live data- add changeimperial(response) to location finder? (same for metric)
+  //});
   //in progress
 }
 let imperialMeasureButton = document.querySelector("#imperialButton");
 imperialMeasureButton.addEventListener("click", changeUnitImperial);
+// imperial
 
+// metric
 function changeUnitMetric(event) {
   event.preventDefault();
   let units = document.querySelectorAll(".unit");
@@ -195,12 +203,12 @@ function changeUnitMetric(event) {
     uph.innerHTML = "kph";
   });
   // in progress
-  let tempDegrees = document.querySelectorAll(".tempDegrees");
-  tempDegrees(function (tempC) {
-    tempC.innerHTML = "16";
-  });
+  let temperature = document.querySelector(".temperature");
+  temperature.innerHTML = Math.round(celsiusTemperature);
   // in progress
 }
 let metricMeasureButton = document.querySelector("#metricButton");
 metricMeasureButton.addEventListener("click", changeUnitMetric);
+// metric
+let celsiusTemperature = null;
 //temperature/unit measure

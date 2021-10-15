@@ -20,9 +20,9 @@
   </head>
   <body>
     <div class="container">
-    <form id="search-form">
-      <div class="row header">
-        <div class="col-10">
+      <form id="search-form">
+        <div class="row header">
+          <div class="col-10">
             <input
               type="text"
               class="search"
@@ -31,15 +31,18 @@
             />
             <input class="button" type="submit" value="Search" />
             <button class="button" id="myLocation">My Location</button>
-          </form>
+          </div>
+          <div class="col-2">
+            <button class="button" id="imperialButton" type="button">
+              Imperial
+            </button>
+            <button class="button" id="metricButton" type="button">
+              Metric
+            </button>
+          </div>
         </div>
-        <div class="col-2">
-          <button class="button" id="imperialButton" type="button">
-            Imperial
-          </button>
-          <button class="button" id="metricButton" type="button">Metric</button>
-        </div>
-      </div>
+      </form>
+
       <br />
       <section class="row topPart">
         <div class="col-6">
@@ -60,12 +63,7 @@
             </div>
             <div class="col-5"></div>
             <div class="col-2 weatherVisual">
-              <img
-                src=""
-                alt="img"
-                id="todayWeatherVisual"
-                class=""
-              />
+              <img src="" alt="img" id="todayWeatherVisual" class="" />
             </div>
           </div>
 
@@ -75,12 +73,18 @@
             </div>
             <div class="col-3 temp">
               <h6>
-                <span class="temperature" id="todayTempHigh">--</span>°<span class="unit">C</span>
+                <span class="temperature" id="todayTempHigh">--</span>°<span
+                  class="unit"
+                  >C</span
+                >
               </h6>
             </div>
             <div class="col-3 temp">
               <h6>
-                <span class="temperature" id="todayTempLow">--</span>°<span class="unit">C</span>
+                <span class="temperature" id="todayTempLow">--</span>°<span
+                  class="unit"
+                  >C</span
+                >
               </h6>
             </div>
           </div>
@@ -125,10 +129,12 @@
               <span id="day1Month">8</span>/<span id="day1day">31</span>
             </div>
             <div class="col-3 forecastCols temp">
-              <span class="tempDegrees temperature">16</span>°<span class="unit">C</span>
+              <span class="tempDegrees temperature">16</span>°<span class="unit"
+                >C</span
+              >
             </div>
             <div class="col-3 forecastCols weatherVisual">☀️</div>
-          </div>        
+          </div>
         </li>
       </ul>
       <footer>
