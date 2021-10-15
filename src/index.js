@@ -164,11 +164,11 @@ function changeUnitImperial(event) {
     uph.innerHTML = "mph";
   });
   //in progress
-  let todayTempLow = document.querySelector(".todayTempLow");
+  let todayTempLow = document.querySelector("#todayTempLow");
   let tempFLow = (celsiusTemperatureLow * 9) / 5 + 32;
   todayTempLow.innerHTML = Math.round(tempFLow);
 
-  let todayTempHigh = document.querySelector(".todayTempHigh");
+  let todayTempHigh = document.querySelector("#todayTempHigh");
   let tempFHigh = (celsiusTemperatureHigh * 9) / 5 + 32;
   todayTempHigh.innerHTML = Math.round(tempFHigh);
 
@@ -191,10 +191,10 @@ function changeUnitMetric(event) {
   });
   // in progress
 
-  let todayTempLow = document.querySelector(".todayTempLow");
+  let todayTempLow = document.querySelector("#todayTempLow");
   todayTempLow.innerHTML = Math.round(celsiusTemperatureLow);
 
-  let todayTempHigh = document.querySelector(".todayTempHigh");
+  let todayTempHigh = document.querySelector("#todayTempHigh");
   todayTempHigh.innerHTML = Math.round(celsiusTemperatureHigh);
 
   // in progress
