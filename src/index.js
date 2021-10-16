@@ -225,20 +225,20 @@ let feelsLike = null;
 function displayForecast() {
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<ul>`;
-  let days = ["thu", "fri", "sat", "sun", "mon", "tues"];
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tues"];
   days.forEach(function (day) {
     forecastHTML =
       forecastHTML +
       `
         <li>
           <div class="row forcastdays day1">
-          <div class="col-4 forecastCols title">Thursday</div>
+          <div class="col-4 forecastCols title">${day}</div>
             <div class="col-4 forecastCols temp">
               <span class="tempDegrees temperature">16</span>°<span class="unit"
                 >C</span
               >
             </div>
-            <div class="col-4 forecastCols weatherVisual">☀️</div>
+            <img src="#" alt="img" class="col-4 forecastCols weatherVisual" />
           </div>
         </li>
   `;
