@@ -1,3 +1,5 @@
+findCity("chamonix");
+
 // today weather visual
 function todayWeatherVisual(response) {
   let todayWeatherVisual = document.querySelector("#todayWeatherVisual");
@@ -54,9 +56,9 @@ function myCountry(response) {
   let myCountry = response.data.sys.country;
   country.innerHTML = `${myCountry}`;
 }
-//user country END
 let myLocationBtn = document.querySelector("#myLocation");
 myLocationBtn.addEventListener("click", getLocation);
+//user country END
 
 //search engine
 //update city START
@@ -168,11 +170,11 @@ function changeUnitImperial(event) {
 
   let wind = document.querySelector("#wind");
   wind.innerHTML = Math.round(kph * 1.609);
-  // malfunctioning
+
   let feel = document.querySelector("#feel");
   feelF = (feelsLike * 9) / 5 + 32;
   feel.innerHTML = Math.round(feelF);
-  // malfunctioning
+
   let todayTempLow = document.querySelector("#todayTempLow");
   let tempFLow = (celsiusTemperatureLow * 9) / 5 + 32;
   todayTempLow.innerHTML = Math.round(tempFLow);
@@ -218,4 +220,41 @@ let kph = null;
 let feelsLike = null;
 
 //temperature/unit measure
-findCity("chamonix");
+
+//forecast
+function displayForecast() {
+  let forecastElement = document.querySelector("#");
+
+  let forecastHTML = `<li>
+          <div class="row title">
+            <div class="col-4 forecastCols title">Day</div>
+            <div class="col-4 forecastCols">Temperature</div>
+            <div class="col-4 forecastCols">Weather</div>
+          </div>
+        </li>
+        <li>
+          <hr />
+          <div class="row forcastdays day1">`;
+  let days = ["thu", "fri", "sat", "sun", "mon", "tues"]
+  days.forEach(funciton (day){
+
+  
+  forecastHTML =
+    forecastHTML +
+    `
+  <div class="col-4 forecastCols title">Thursday</div>
+
+            <div class="col-4 forecastCols temp">
+              <span class="tempDegrees temperature">16</span>°<span class="unit"
+                >C</span
+              >
+            </div>
+            <div class="col-4 forecastCols weatherVisual">☀️</div>
+          </div>
+        </li>
+  `;
+});
+}
+
+//forecast
+displayForecast();
