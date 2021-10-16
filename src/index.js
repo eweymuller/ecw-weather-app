@@ -36,7 +36,6 @@ function additionalWeatherData(response) {
   weatherDescription.innerHTML = `${response.data.weather[0].description}`;
   kph = response.data.wind.speed;
   feel = response.data.main.feels_like;
-  console.log(feel);
 }
 // additional weather data END
 
