@@ -35,7 +35,8 @@ function additionalWeatherData(response) {
   let weatherDescription = document.querySelector(".weatherDescription");
   weatherDescription.innerHTML = `${response.data.weather[0].description}`;
   kph = response.data.wind.speed;
-  console.log(kph);
+  feel = response.data.main.feels_like;
+  console.log(feel);
 }
 // additional weather data END
 
@@ -166,9 +167,13 @@ function changeUnitImperial(event) {
     uph.innerHTML = "mph";
   });
 
-  let wind = document.querySelector(".wind");
+  let wind = document.querySelector("#wind");
   wind.innerHTML = Math.round(kph * 1.609);
-
+  // malfunctioning
+  let feelF = document.querySelector("#feel");
+  feelF = (feel * 9) / 5 + 32;
+  feel.innerHTML = Math.round(feelF);
+  // malfunctioning
   let todayTempLow = document.querySelector("#todayTempLow");
   let tempFLow = (celsiusTemperatureLow * 9) / 5 + 32;
   todayTempLow.innerHTML = Math.round(tempFLow);
@@ -191,11 +196,13 @@ function changeUnitMetric(event) {
   let unitsPerHour = document.querySelectorAll(".unitsPerHour");
   unitsPerHour.forEach(function (uph) {
     uph.innerHTML = "kph";
-    let wind = document.querySelector(".wind");
   });
 
-  let wind = document.querySelector(".wind");
+  let wind = document.querySelector("#wind");
   wind.innerHTML = Math.round(kph);
+
+  let feel = document.querySelector("#feel");
+  feel.innerHTML = Math.round(feel);
 
   let todayTempLow = document.querySelector("#todayTempLow");
   todayTempLow.innerHTML = Math.round(celsiusTemperatureLow);
@@ -209,6 +216,7 @@ metricMeasureButton.addEventListener("click", changeUnitMetric);
 let celsiusTemperatureHigh = null;
 let celsiusTemperatureLow = null;
 let kph = null;
+let feel = null;
 
 //temperature/unit measure
 findCity("chamonix");
