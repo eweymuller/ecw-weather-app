@@ -223,7 +223,7 @@ let feelsLike = null;
 
 //forecast
 function displayForecast() {
-  let forecastElement = document.querySelector("#");
+  let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<li>
           <div class="row title">
@@ -232,18 +232,17 @@ function displayForecast() {
             <div class="col-4 forecastCols">Weather</div>
           </div>
         </li>
-        <li>
-          <hr />
-          <div class="row forcastdays day1">`;
+        `;
   let days = ["thu", "fri", "sat", "sun", "mon", "tues"]
   days.forEach(funciton (day){
 
-  
   forecastHTML =
     forecastHTML +
     `
-  <div class="col-4 forecastCols title">Thursday</div>
-
+        <li>
+          <hr />
+          <div class="row forcastdays day1">
+          <div class="col-4 forecastCols title">Thursday</div>
             <div class="col-4 forecastCols temp">
               <span class="tempDegrees temperature">16</span>°<span class="unit"
                 >C</span
