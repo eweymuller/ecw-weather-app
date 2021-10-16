@@ -34,6 +34,8 @@ function additionalWeatherData(response) {
   feel.innerHTML = `${Math.round(response.data.main.feels_like)}`;
   let weatherDescription = document.querySelector(".weatherDescription");
   weatherDescription.innerHTML = `${response.data.weather[0].description}`;
+  kph = response.data.wind.speed;
+  console.log(kph);
 }
 // additional weather data END
 
@@ -163,7 +165,10 @@ function changeUnitImperial(event) {
   unitsPerHour.forEach(function (uph) {
     uph.innerHTML = "mph";
   });
-  //in progress
+
+  let wind = document.querySelector(".wind");
+  wind.innerHTML = Math.round(kph * 1.609);
+
   let todayTempLow = document.querySelector("#todayTempLow");
   let tempFLow = (celsiusTemperatureLow * 9) / 5 + 32;
   todayTempLow.innerHTML = Math.round(tempFLow);
@@ -171,8 +176,6 @@ function changeUnitImperial(event) {
   let todayTempHigh = document.querySelector("#todayTempHigh");
   let tempFHigh = (celsiusTemperatureHigh * 9) / 5 + 32;
   todayTempHigh.innerHTML = Math.round(tempFHigh);
-
-  //in progress
 }
 let imperialMeasureButton = document.querySelector("#imperialButton");
 imperialMeasureButton.addEventListener("click", changeUnitImperial);
@@ -188,22 +191,24 @@ function changeUnitMetric(event) {
   let unitsPerHour = document.querySelectorAll(".unitsPerHour");
   unitsPerHour.forEach(function (uph) {
     uph.innerHTML = "kph";
+    let wind = document.querySelector(".wind");
   });
-  // in progress
+
+  let wind = document.querySelector(".wind");
+  wind.innerHTML = Math.round(kph);
 
   let todayTempLow = document.querySelector("#todayTempLow");
   todayTempLow.innerHTML = Math.round(celsiusTemperatureLow);
 
   let todayTempHigh = document.querySelector("#todayTempHigh");
   todayTempHigh.innerHTML = Math.round(celsiusTemperatureHigh);
-
-  // in progress
 }
 let metricMeasureButton = document.querySelector("#metricButton");
 metricMeasureButton.addEventListener("click", changeUnitMetric);
 // metric
 let celsiusTemperatureHigh = null;
 let celsiusTemperatureLow = null;
+let kph = null;
 
 //temperature/unit measure
 findCity("chamonix");
