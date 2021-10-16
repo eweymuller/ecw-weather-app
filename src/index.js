@@ -247,6 +247,5 @@ function displayForecast() {
   forecastHTML = forecastHTML + `</ul>`;
   forecastElement.innerHTML = forecastHTML;
 }
-
 //forecast
 displayForecast();
