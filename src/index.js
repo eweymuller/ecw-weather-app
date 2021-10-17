@@ -258,7 +258,6 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 //forecast
-displayForecast();
 
 let celsiusTemperatureHigh = null;
 let celsiusTemperatureLow = null;
