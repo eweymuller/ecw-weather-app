@@ -10,7 +10,7 @@ function todayWeatherVisual(response) {
 }
 // today weather visual
 
-// user location START
+//api user location START
 function getLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(myLocation);
@@ -24,7 +24,7 @@ function myLocation(position) {
 
   axios.get(apiUrl).then(cityTemp);
 }
-//user location END
+//api user location END
 
 // additional weather data START
 function additionalWeatherData(response) {
@@ -72,14 +72,14 @@ function search(event) {
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
 //update city END
-//find city START
+//api city START
 function findCity(city) {
   let apiKey = "7633347349ec94a368e4a15d93744b30";
   let units = "metric";
   let cityApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(cityApiUrl).then(cityTemp);
 }
-//find city END
+//api city END
 //search engine
 
 // city temp START
@@ -97,8 +97,20 @@ function cityTemp(response) {
   todayTempLow.innerHTML = `${tempLow}`;
   celsiusTemperatureHigh = response.data.main.temp_max;
   celsiusTemperatureLow = response.data.main.temp_min;
+  getForecast(response.data.coord);
 }
 // city temp END
+
+// forecast api START
+function getForecast(coordinates) {
+  let lat = coordinates.lat;
+  let lon = coordinates.lon;
+  let apiKey = "7633347349ec94a368e4a15d93744b30";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+  axios.get(apiUrl).then(displayForecast);
+  console.log(apiUrl);
+}
+// forecast api END
 
 // current date START
 //date preset START
@@ -214,15 +226,13 @@ function changeUnitMetric(event) {
 let metricMeasureButton = document.querySelector("#metricButton");
 metricMeasureButton.addEventListener("click", changeUnitMetric);
 // metric
-let celsiusTemperatureHigh = null;
-let celsiusTemperatureLow = null;
-let kph = null;
-let feelsLike = null;
 
 //temperature/unit measure
 
 //forecast
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response);
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<ul>`;
   let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tues"];
@@ -249,3 +259,8 @@ function displayForecast() {
 }
 //forecast
 displayForecast();
+
+let celsiusTemperatureHigh = null;
+let celsiusTemperatureLow = null;
+let kph = null;
+let feelsLike = null;
