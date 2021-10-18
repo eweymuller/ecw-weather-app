@@ -105,8 +105,9 @@ function cityTemp(response) {
 function getForecast(coordinates) {
   let lat = coordinates.lat;
   let lon = coordinates.lon;
+  let units = `metric`;
   let apiKey = "7633347349ec94a368e4a15d93744b30";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(displayForecast);
   console.log(apiUrl);
 }
@@ -233,22 +234,24 @@ metricMeasureButton.addEventListener("click", changeUnitMetric);
 function displayForecast(response) {
   console.log(response);
   console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<ul>`;
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tues"];
-  days.forEach(function (day) {
+
+  forecast.forEach(function (forecastDay) {
     forecastHTML =
       forecastHTML +
       `
         <li>
           <div class="row forcastdays day1">
-          <div class="col-4 forecastCols title">${day}</div>
-            <div class="col-4 forecastCols temp">
-              <span class="tempDegrees temperature">16</span>°<span class="unit"
+          <div class="col-3 forecastCols title">${forecastDay.dt}</div>
+            <div class="col-3 forecastCols temp">
+              <span class="tempDegrees temperature">${forecastDay.temp.day}</span>°<span class="unit"
                 >C</span
               >
             </div>
-            <img src="#" alt="img" class="col-4 forecastCols weatherVisual" />
+            <div class="col-3 forecastCols weatherDescription">${forecastDay.weather[0].main}</div>
+            <img src="#" alt="img" class="col-3 forecastCols weatherVisual" />
           </div>
         </li>
   `;
