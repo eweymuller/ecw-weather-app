@@ -231,6 +231,22 @@ metricMeasureButton.addEventListener("click", changeUnitMetric);
 //temperature/unit measure
 
 //forecast
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  return days[day + 1];
+}
+
 function displayForecast(response) {
   console.log(response);
   console.log(response.data.daily);
@@ -244,7 +260,9 @@ function displayForecast(response) {
       `
         <li>
           <div class="row forcastdays day1">
-          <div class="col-3 forecastCols title">${forecastDay.dt}</div>
+          <div class="col-3 forecastCols title">${formatDay(
+            forecastDay.dt
+          )}</div>
             <div class="col-3 forecastCols temp">
               <span class="tempDegrees temperature">${Math.round(
                 forecastDay.temp.day
