@@ -246,12 +246,18 @@ function displayForecast(response) {
           <div class="row forcastdays day1">
           <div class="col-3 forecastCols title">${forecastDay.dt}</div>
             <div class="col-3 forecastCols temp">
-              <span class="tempDegrees temperature">${forecastDay.temp.day}</span>°<span class="unit"
+              <span class="tempDegrees temperature">${Math.round(
+                forecastDay.temp.day
+              )}</span>°<span class="unit"
                 >C</span
               >
             </div>
-            <div class="col-3 forecastCols weatherDescription">${forecastDay.weather[0].main}</div>
-            <img src="#" alt="img" class="col-3 forecastCols weatherVisual" />
+            <div class="col-3 forecastCols weatherDescription">${
+              forecastDay.weather[0].main
+            }</div>
+            <img src="https://openweathermap.org/img/wn${
+              forecastDay.weather[0].icon
+            }@2x.png" alt="img" class="col-3 forecastCols weatherVisual" />
           </div>
         </li>
   `;
