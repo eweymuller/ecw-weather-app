@@ -63,12 +63,15 @@ section,
   padding: 10px 0px;
 }
 .weatherVisual {
-  font-size: 30px;
+  max-width: 110px;
 }
 .forecast {
   padding: 20px;
   font-size: 18px;
   box-shadow: rgba(66, 123, 222, 0.255) 2px 5px 8px 0px;
+}
+#forecastWeatherVisual {
+  max-width: 100px;
 }
 .forecastCols {
   padding: 5px 0px 5px;
