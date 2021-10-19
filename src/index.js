@@ -255,7 +255,7 @@ function displayForecast(response) {
             <div class="col-3 forecastCols weatherDescription">${
               forecastDay.weather[0].main
             }</div>
-            <img src="https://openweathermap.org/img/wn${
+            <img src="https://openweathermap.org/img/wn/${
               forecastDay.weather[0].icon
             }@2x.png" alt="img" class="col-3 forecastCols weatherVisual" />
           </div>
