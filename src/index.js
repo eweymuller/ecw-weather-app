@@ -260,7 +260,6 @@ function displayForecast(response) {
 
   forecast.forEach(function (forecastDay, index) {
     forecastCTemp = forecastDay.temp.day;
-    console.log(forecastCTemp);
     if (index > 0) {
       forecastHTML =
         forecastHTML +
