@@ -109,7 +109,6 @@ function getForecast(coordinates) {
   let apiKey = "7633347349ec94a368e4a15d93744b30";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(displayForecast);
-  console.log(apiUrl);
 }
 // forecast api END
 
@@ -195,6 +194,10 @@ function changeUnitImperial(event) {
   let todayTempHigh = document.querySelector("#todayTempHigh");
   let tempFHigh = (celsiusTemperatureHigh * 9) / 5 + 32;
   todayTempHigh.innerHTML = Math.round(tempFHigh);
+
+  let forecastTemp = document.querySelector("#forecastTemp");
+  let forecastFTemp = (forecastCTemp * 9) / 5 + 32;
+  forecastTemp.innerHTML = Math.round(forecastFTemp);
 }
 let imperialMeasureButton = document.querySelector("#imperialButton");
 imperialMeasureButton.addEventListener("click", changeUnitImperial);
@@ -223,6 +226,9 @@ function changeUnitMetric(event) {
 
   let todayTempHigh = document.querySelector("#todayTempHigh");
   todayTempHigh.innerHTML = Math.round(celsiusTemperatureHigh);
+
+  let forecastTemp = document.querySelector("#forecastTemp");
+  forecastTemp.innerHTML = Math.round(forecastCTemp);
 }
 let metricMeasureButton = document.querySelector("#metricButton");
 metricMeasureButton.addEventListener("click", changeUnitMetric);
@@ -248,13 +254,13 @@ function formatDay(timestamp) {
 }
 
 function displayForecast(response) {
-  console.log(response);
-  console.log(response.data.daily);
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<ul>`;
 
   forecast.forEach(function (forecastDay, index) {
+    forecastCTemp = forecastDay.temp.day;
+    console.log(forecastCTemp);
     if (index > 0) {
       forecastHTML =
         forecastHTML +
@@ -265,7 +271,7 @@ function displayForecast(response) {
             forecastDay.dt
           )}</div>
             <div class="col-3 forecastCols temp">
-              <span class="tempDegrees temperature">${Math.round(
+              <span class="tempDegrees temperature" id="forecastTemp">${Math.round(
                 forecastDay.temp.day
               )}</span>°<span class="unit"
                 >C</span
@@ -287,7 +293,7 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 //forecast
-
+let forecastCTemp = null;
 let celsiusTemperatureHigh = null;
 let celsiusTemperatureLow = null;
 let kph = null;
